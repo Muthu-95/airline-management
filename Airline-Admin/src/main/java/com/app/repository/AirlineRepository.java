@@ -14,7 +14,10 @@ public interface AirlineRepository extends JpaRepository<Airlines, Integer> {
 
 	@Query(value = "SELECT a.airlineId as airlineId, a.airlineName as airlineName, "
 			+ "a.contactAddress as contactAddress, a.contactNumber as contactNumber "
-			+ "FROM Airlines a WHERE a.isDeleted=1")
+			+ "FROM Airlines a WHERE a.isDeleted=0")
 	List<Map<String, Object>> getAllAirlineDetails();
+
+	@Query(value = "SELECT a FROM Airlines a WHERE a.isDeleted=0 and a.airlineId=:airlineId")
+	Airlines getAirlineById(int airlineId);
 
 }

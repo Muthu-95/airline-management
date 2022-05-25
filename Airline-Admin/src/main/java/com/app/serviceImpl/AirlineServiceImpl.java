@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.exception.ApplicationException;
 import com.app.exception.ErrorCode;
+import com.app.model.Airlines;
 import com.app.repository.AirlineRepository;
 import com.app.service.AirlineService;
 
@@ -22,7 +23,7 @@ public class AirlineServiceImpl implements AirlineService {
 		List<Map<String, Object>> airlineDetails = null;
 		try {
 			airlineDetails = airlineRepository.getAllAirlineDetails();
-			if(airlineDetails.isEmpty())
+			if (airlineDetails.isEmpty())
 				throw new ApplicationException(ErrorCode.AIRLINE_DETAILS_NOTFOUND);
 		} catch (ApplicationException e) {
 			throw new ApplicationException(ErrorCode.AIRLINE_DETAILS_NOTFOUND);
@@ -30,6 +31,21 @@ public class AirlineServiceImpl implements AirlineService {
 			e.printStackTrace();
 		}
 		return airlineDetails;
+	}
+
+	@Override
+	public Airlines getAirlineById(int airlineId) {
+		Airlines airline = null;
+		try {
+			airline = airlineRepository.getAirlineById(airlineId);
+			if (airline == null)
+				throw new ApplicationException(ErrorCode.INVALID_AIRLINE_ID);
+		} catch (ApplicationException e) {
+			throw new ApplicationException(ErrorCode.INVALID_AIRLINE_ID);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return airline;
 	}
 
 }

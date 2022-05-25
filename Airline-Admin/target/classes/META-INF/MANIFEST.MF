@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Built-By: USER
-Build-Jdk: 17.0.1
-Implementation-Title: Admin
-Implementation-Version: 0.0.1-SNAPSHOT
-Implementation-Vendor-Id: com.app
-Implementation-URL: https://spring.io/projects/spring-boot/Airline-Admin
-Created-By: Maven Integration for Eclipse
-

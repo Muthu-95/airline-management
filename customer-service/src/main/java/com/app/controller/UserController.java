@@ -10,7 +10,7 @@ public class UserController {
 
     @GetMapping("/getWelcomeMsg")
     public String getWelcomeMsg(){
-        return "Hello User";
+        return "Hello World";
     }
 
 }

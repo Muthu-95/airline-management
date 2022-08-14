@@ -10,4 +10,10 @@ public interface UserRepository extends JpaRepository <Users, Integer> {
 
     @Query(value= "select u from Users u where u.isDeleted=0")
     Users findAllUsers();
+
+    @Query(value = "select u from Users u where u.email=:email and u.isDeleted=0")
+    Users findUserByEmail(String email);
+
+    @Query(value = "select u from Users u where u.userId=:userId and u.isDeleted=0")
+    Users findByUserId(int userId);
 }
